@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Auto Form Filler Advanced",
+  "version": "2.1.2",
+  "description": "Ekstensi canggih untuk mengisi form otomatis dengan jadwal dan data pribadi",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://docs.google.com/*",
+    "https://forms.gle/*",
+    "http://*/*",
+    "https://*/*",
+    "file:///*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://docs.google.com/forms/*", 
+        "https://forms.gle/*",
+        "http://*/*",
+        "https://*/*",
+        "file:///*"
+      ],
+      "js": ["content_advanced.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup_advanced.html",
+    "default_title": "Auto Form Filler Advanced"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["*.js", "*.css", "*.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+} 

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Form Filler Advanced</title>
+    <link rel="stylesheet" href="styles_fixed.css">
+    <style>
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .radio-option input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            margin: 0;
+        }
+        .radio-option label {
+            margin: 0;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .schedule-section {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #4facfe;
+        }
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .schedule-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+        .schedule-item label {
+            font-size: 11px;
+            margin: 0;
+        }
+        .time-input {
+            width: 70px;
+            padding: 5px;
+            font-size: 11px;
+        }
+        .url-section {
+            margin: 15px 0;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .status-active { background: #28a745; }
+        .status-inactive { background: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>🤖 Auto Form Filler</h2>
+            <p class="subtitle">Pengisian form otomatis dengan jadwal</p>
+        </div>
+
+        <div class="form-section">
+            <!-- Data Pribadi -->
+            <div class="field-group">
+                <label for="namaInput">👤 Nama:</label>
+                <input type="text" id="namaInput" class="input-field" placeholder="Masukkan nama lengkap">
+            </div>
+
+            <div class="field-group">
+                <label>⚧ Jenis Kelamin:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="jenkelL" name="jenis_kelamin" value="L">
+                        <label for="jenkelL">L (Laki-laki)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="jenkelP" name="jenis_kelamin" value="P">
+                        <label for="jenkelP">P (Perempuan)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label>🎓 Kelas:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="kelasEcho" name="kelas" value="IV RKS Echo">
+                        <label for="kelasEcho">IV RKS Echo</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="kelasTrace" name="kelas" value="IV RKS Trace">
+                        <label for="kelasTrace">IV RKS Trace</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="kelasRoute" name="kelas" value="IV RKS Route">
+                        <label for="kelasRoute">IV RKS Route</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="kelasRPKK" name="kelas" value="IV RPKK">
+                        <label for="kelasRPKK">IV RPKK</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="kelasRSK" name="kelas" value="IV RSK">
+                        <label for="kelasRSK">IV RSK</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="kelasRPLK" name="kelas" value="IV RPLK">
+                        <label for="kelasRPLK">IV RPLK</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="keperluanInput">📝 Keperluan:</label>
+                <input type="text" id="keperluanInput" class="input-field" placeholder="Masukkan keperluan">
+            </div>
+
+            <div class="field-group">
+                <label>📍 Lokasi:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="lokasiEcho" name="lokasi" value="IV RKS Echo">
+                        <label for="lokasiEcho">IV RKS Echo</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="lokasiTrace" name="lokasi" value="IV RKS Trace">
+                        <label for="lokasiTrace">IV RKS Trace</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="lokasiRoute" name="lokasi" value="IV RKS Route">
+                        <label for="lokasiRoute">IV RKS Route</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="lokasiRPKK" name="lokasi" value="IV RPKK">
+                        <label for="lokasiRPKK">IV RPKK</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="lokasiRSK" name="lokasi" value="IV RSK">
+                        <label for="lokasiRSK">IV RSK</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="lokasiRPLK" name="lokasi" value="IV RPLK">
+                        <label for="lokasiRPLK">IV RPLK</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label>🏠 Asrama:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="asramaE" name="asrama" value="E">
+                        <label for="asramaE">E</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="asramaF" name="asrama" value="F">
+                        <label for="asramaF">F</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- URL Form -->
+        <div class="url-section">
+            <div class="field-group">
+                <label for="formUrlInput">🔗 URL Form:</label>
+                <input type="url" id="formUrlInput" class="input-field" placeholder="https://docs.google.com/forms/...">
+            </div>
+        </div>
+
+        <!-- Jadwal Otomatis -->
+        <div class="schedule-section">
+            <h4>⏰ Jadwal Otomatis</h4>
+            <div class="checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="autoScheduleEnabled">
+                    <span class="status-indicator" id="scheduleStatus" class="status-inactive"></span>
+                    Aktifkan jadwal otomatis
+                </label>
+            </div>
+            
+            <div class="schedule-grid" id="scheduleGrid" style="display: none;">
+                <div class="schedule-item">
+                    <input type="checkbox" id="senin" name="days" value="1">
+                    <label for="senin">Senin</label>
+                    <input type="time" class="time-input" data-day="1" value="07:00">
+                </div>
+                <div class="schedule-item">
+                    <input type="checkbox" id="selasa" name="days" value="2">
+                    <label for="selasa">Selasa</label>
+                    <input type="time" class="time-input" data-day="2" value="07:00">
+                </div>
+                <div class="schedule-item">
+                    <input type="checkbox" id="rabu" name="days" value="3">
+                    <label for="rabu">Rabu</label>
+                    <input type="time" class="time-input" data-day="3" value="07:00">
+                </div>
+                <div class="schedule-item">
+                    <input type="checkbox" id="kamis" name="days" value="4">
+                    <label for="kamis">Kamis</label>
+                    <input type="time" class="time-input" data-day="4" value="07:00">
+                </div>
+                <div class="schedule-item">
+                    <input type="checkbox" id="jumat" name="days" value="5">
+                    <label for="jumat">Jumat</label>
+                    <input type="time" class="time-input" data-day="5" value="07:00">
+                </div>
+                <div class="schedule-item">
+                    <input type="checkbox" id="sabtu" name="days" value="6">
+                    <label for="sabtu">Sabtu</label>
+                    <input type="time" class="time-input" data-day="6" value="07:00">
+                </div>
+                <div class="schedule-item">
+                    <input type="checkbox" id="minggu" name="days" value="0">
+                    <label for="minggu">Minggu</label>
+                    <input type="time" class="time-input" data-day="0" value="07:00">
+                </div>
+            </div>
+        </div>
+
+        <div class="button-section">
+            <button id="saveSettings" class="btn btn-primary" type="button">💾 Simpan Pengaturan</button>
+            <button id="fillNow" class="btn btn-secondary" type="button">🚀 Isi Form Sekarang</button>
+            <button id="testSchedule" class="btn btn-secondary" type="button">🧪 Test Schedule</button>
+            <button id="debugSchedule" class="btn btn-secondary" type="button">🐛 Debug</button>
+        </div>
+
+        <div class="status-section">
+            <div id="statusMessage" class="status-message"></div>
+        </div>
+
+        <div class="info-section">
+            <details>
+                <summary>ℹ️ Cara Penggunaan</summary>
+                <ul>
+                    <li>Isi semua data form yang diperlukan</li>
+                    <li>Masukkan URL Google Form target</li>
+                    <li>Atur jadwal otomatis (opsional)</li>
+                    <li>Klik "Simpan Pengaturan"</li>
+                    <li>Form akan terbuka dan terisi otomatis sesuai jadwal</li>
+                </ul>
+            </details>
+        </div>
+    </div>
+
+    <script src="popup_advanced.js"></script>
+</body>
+</html> 

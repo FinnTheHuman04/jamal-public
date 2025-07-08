@@ -1,0 +1,31 @@
+# Node modules (if needed for development)
+node_modules/
+
+# Build files
+dist/
+build/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Extension packaging
+*.zip
+*.crx
+*.pem
+
+# Personal settings
+settings.json
+config.json 
